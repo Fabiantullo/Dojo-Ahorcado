@@ -1,8 +1,6 @@
 #region Importaciones
-from Paquete_Funciones.funciones_archivo import *
 from Paquete_Funciones.funciones_normalizacion import *
 from Paquete_Ahorcado.funciones_especificas_juego import *
-from Paquete_Funciones.funciones_generales import *
 from Paquete_Ahorcado.funciones_inicio_ronda import *
 from Paquete_Ahorcado.funciones_mensajes import *
 from Paquete_Ahorcado.funciones_actualizacion_estado import *
@@ -45,7 +43,7 @@ def jugar_ahorcado() -> None:
     input("Presione enter para salir")
 
 #! No encuentro para que se utiliza
-def obtener_elemento_aleatorio(lista_elementos:list)->any:
-    pass
+# def obtener_elemento_aleatorio(lista_elementos:list)->any:
+#     pass
 
 jugar_ahorcado()

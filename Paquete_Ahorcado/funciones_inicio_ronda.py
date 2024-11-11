@@ -11,7 +11,7 @@ def seleccionar_categoria(lista: list) -> str:
     """    
     return random.choice(lista)
 
-def seleccionar_palabra(lista: list, categoria: str) -> str:
+def seleccionar_palabra(lista: list|dict, categoria: str) -> str:
     """
     Selecciona una palabra al azar de una lista de palabras.
 

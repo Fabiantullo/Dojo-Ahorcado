@@ -1,5 +1,4 @@
 from Paquete_Funciones.funciones_generales import *
-import random
 
 
 def procesar_letra(letra: str, palabra: str, letras_acertadas: list, letras_incorrectas: list, diccionario_juego: dict) -> bool:
