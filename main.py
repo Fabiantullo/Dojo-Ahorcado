@@ -1,5 +1,6 @@
 import random
 import re
+from os import system as sys
 
 def obtener_lista_palabras() -> list:
     lista = []
@@ -29,7 +30,7 @@ def jugar_ahorcado() -> None:
     diccionario_palabras = normalizar_lista_en_diccionario(lista_palabras)
     
     # Selecciona la categoría y la palabra
-    categoria, palabra = seleccionar_categoria_y_palabra(diccionario_palabras)
+    palabra = seleccionar_categoria_y_palabra(diccionario_palabras)
     palabra_oculta = generar_palabra_oculta(palabra)
 
     diccionario_juego = {"intentos": 7, "puntuacion": []}
@@ -45,14 +46,42 @@ def jugar_ahorcado() -> None:
         
         if verificar_estado_ronda(palabra_oculta):
             manejar_ganancia(diccionario_juego, letras_acertadas, letras_incorrectas)
-            categoria, palabra = seleccionar_categoria_y_palabra(diccionario_palabras)
+            palabra = seleccionar_categoria_y_palabra(diccionario_palabras)
             palabra_oculta = generar_palabra_oculta(palabra)
+            if desea_continuar("¿Desea continuar? (si/no): ", "Ingrese una respuesta valida"):
+                continue
+            else:
+                break
+        sys("pause")
+        sys("cls")
     finalizar_juego(diccionario_juego)
+    print("\nGracias por jugar\n")
+    input("Presione enter para salir")
 
 def mostrar_estado_juego(letras_acertadas: list, letras_incorrectas: list, palabra_oculta: list) -> None:
-    print(f"\nLetras acertadas: {letras_acertadas}")
-    print(f"Letras incorrectas: {letras_incorrectas}\n")
+    print(f"\nLetras acertadas: ")
+    mostrar_lista(letras_acertadas)
+    print(f"Letras incorrectas: ")
+    mostrar_lista(letras_incorrectas)
     mostrar_palabra_oculta(palabra_oculta)
+
+def mostrar_lista(lista: list) -> None:
+    for elemento in lista:
+        print(elemento, end=" ")
+    print("\n")
+def desea_continuar(mensaje, mensaje_error) -> bool:
+    while True:
+        respuesta = input(f"{mensaje}").lower()
+        if respuesta == "si" or respuesta == "s":
+            validacion = True
+            break
+        elif respuesta == "no" or respuesta == "n":
+            validacion = False
+            break
+        else:
+            print(f"{mensaje_error}")
+    return validacion
+
 
 def procesar_letra(letra: str, palabra: str, letras_acertadas: list, letras_incorrectas: list, diccionario_juego: dict) -> bool:
     if verificar_letra_ya_ingresada(letra, letras_acertadas, letras_incorrectas):
@@ -69,6 +98,7 @@ def procesar_letra(letra: str, palabra: str, letras_acertadas: list, letras_inco
 
 def manejar_ganancia(diccionario_juego: dict, letras_acertadas: list, letras_incorrectas: list) -> None:
     puntuacion_ganada = calcular_puntuacion_parcial(letras_acertadas, letras_incorrectas, diccionario_juego)
+    diccionario_juego["intentos"] = 7
     print(f"¡Ganaste! Ganaste {puntuacion_ganada} puntos")
     letras_acertadas.clear()
     letras_incorrectas.clear()
@@ -77,7 +107,7 @@ def seleccionar_categoria_y_palabra(diccionario_palabras: dict) -> tuple:
     lista_categorias = ["Programación", "Videojuegos", "Historia", "Deportes"]
     categoria = seleccionar_categoria(lista_categorias)
     palabra = seleccionar_palabra(diccionario_palabras, categoria).lower()
-    return categoria, palabra
+    return palabra
 
 def finalizar_juego(diccionario_juego) -> None:
     puntuacion = calcular_puntuacion_final(diccionario_juego)
