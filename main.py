@@ -1,12 +1,14 @@
-import random
+#region Importaciones
 from Paquete_Funciones.funciones_archivo import *
 from Paquete_Funciones.funciones_normalizacion import *
 from Paquete_Ahorcado.funciones_especificas_juego import *
 from Paquete_Funciones.funciones_generales import *
+from Paquete_Ahorcado.funciones_inicio_ronda import *
+from Paquete_Ahorcado.funciones_mensajes import *
+from Paquete_Ahorcado.funciones_actualizacion_estado import *
+from Paquete_Ahorcado.funciones_calculo_puntaje import *
 from os import system as sys
-
-
-
+#endregion
 
 def jugar_ahorcado() -> None:
     # Arranca el juego
@@ -41,36 +43,6 @@ def jugar_ahorcado() -> None:
     finalizar_juego(diccionario_juego)
     print("\nGracias por jugar\n")
     input("Presione enter para salir")
-
-
-
-
-
-
-
-
-
-
-def finalizar_juego(diccionario_juego) -> None:
-    puntuacion = calcular_puntuacion_final(diccionario_juego)
-    guardar_puntuacion(puntuacion, ingresar_nombre_usuario("Ingrese su nombre: ", "Ingrese un nombre valido", 2, 10))
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
 
 #! No encuentro para que se utiliza
 def obtener_elemento_aleatorio(lista_elementos:list)->any:

@@ -1,4 +1,13 @@
 def normalizar_lista_en_diccionario(lista: list) -> dict:
+    """
+    Normaliza una lista en un diccionario.
+
+    Args:
+        lista (list): Lista de elementos.
+
+    Returns:
+        dict: Un diccionario con los elementos de la lista.
+    """    
     diccionario = {}
     for elemento in lista:
         key = elemento[0]
