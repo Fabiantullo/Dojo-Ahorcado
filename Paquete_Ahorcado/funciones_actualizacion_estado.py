@@ -24,9 +24,11 @@ def verificar_estado_juego(diccionario_juego:dict, palabra: str, diccionario_pal
     Args:
         diccionario_juego (dict): Un diccionario que contiene el estado actual del juego, 
                                   incluyendo el número de intentos restantes bajo la clave "intentos".
+        palabra (str): La palabra que se está adivinando.
+        diccionario_palabras (dict): Un diccionario que contiene las palabras agrupadas por categorías.
 
     Returns:
-        bool: True si hay intentos restantes, False en caso contrario.
+        bool: True si el juego puede continuar, False en caso contrario.
     """
     if diccionario_juego["intentos"] == 0:
         print("Te quedaste sin intentos")
