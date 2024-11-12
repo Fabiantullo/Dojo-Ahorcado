@@ -21,13 +21,14 @@ def obtener_lista_palabras(path: str = "palabras.csv") -> list:
             lista.append(lectura)
     return lista
  
-def guardar_puntuacion(puntuacion: int, nombre: str) -> bool:
+def guardar_puntuacion(puntuacion: int, nombre: str, path: str= "puntuaciones.cvs") -> bool:
     """
     Guarda la puntuacion en un archivo csv.
 
     Args:
         puntuacion (int): Puntuacion final del jugador.
         nombre (str): Nombre del jugador.
+        path (str, optional): Path hacia el archivo csv. Defaults to "puntuaciones.cvs".
 
     Returns:
         bool: True si la puntuacion se guardo correctamente, False en caso contrario.
@@ -35,7 +36,7 @@ def guardar_puntuacion(puntuacion: int, nombre: str) -> bool:
     validacion = False
     from datetime import datetime
     fecha = datetime.now().strftime("%d/%m/%Y")
-    with open("puntuaciones.csv", "a") as archivo:
+    with open(path, "a") as archivo:
         if archivo.tell() == 0:
             archivo.write("Nombre,Puntuacion,Fecha\n")
         archivo.write(f"{nombre},{puntuacion},{fecha}\n")
