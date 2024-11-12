@@ -12,6 +12,7 @@ def jugar_ahorcado() -> None:
     # Arranca el juego
     lista_palabras = obtener_lista_palabras()
     diccionario_palabras = normalizar_lista_en_diccionario(lista_palabras)
+    limpiar_diccionario(diccionario_palabras)
     
     # Selecciona la categoría y la palabra
     palabra = seleccionar_categoria_y_palabra(diccionario_palabras)
@@ -21,7 +22,7 @@ def jugar_ahorcado() -> None:
     letras_acertadas = []
     letras_incorrectas = []
     
-    while verificar_estado_juego(diccionario_juego):
+    while verificar_estado_juego(diccionario_juego, palabra, diccionario_palabras):
         mostrar_estado_juego(letras_acertadas, letras_incorrectas, palabra_oculta)
         letra = ingresar_letra("Ingrese una letra: ", "Ingrese una letra valida")
         sys("cls")
@@ -30,6 +31,7 @@ def jugar_ahorcado() -> None:
         
         if verificar_estado_ronda(palabra_oculta):
             manejar_ganancia(diccionario_juego, letras_acertadas, letras_incorrectas)
+
             palabra = seleccionar_categoria_y_palabra(diccionario_palabras)
             palabra_oculta = generar_palabra_oculta(palabra)
             if desea_continuar("¿Desea continuar? (si/no): ", "Ingrese una respuesta valida"):

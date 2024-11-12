@@ -11,7 +11,19 @@ def mostrar_lista(lista: list) -> None:
     for elemento in lista:
         print(elemento, end=" ")
     print("\n")
+    
+def limpiar_diccionario(diccionario: dict) -> None:
+    """
+    Elimina los elementos vacíos de un diccionario.
 
+    Args:
+        diccionario (dict): El diccionario a limpiar.
+    """    
+    for clave in diccionario:
+        for item in diccionario[clave]:
+            if item == "":
+                diccionario[clave].remove(item)
+                
 def desea_continuar(mensaje, mensaje_error) -> bool:
     """
     Solicita al usuario una respuesta de si o no y valida la entrada.

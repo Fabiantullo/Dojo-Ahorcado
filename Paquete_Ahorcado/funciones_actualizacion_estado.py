@@ -17,7 +17,7 @@ def verificar_estado_ronda(palabra_oculta: list)->bool:
         valalidacion = True
     return valalidacion
 
-def verificar_estado_juego(diccionario_juego:dict)->bool:
+def verificar_estado_juego(diccionario_juego:dict, palabra: str, diccionario_palabras: dict)->bool:
     """
     Verifica el estado del juego basado en el número de intentos restantes.
 
@@ -29,9 +29,14 @@ def verificar_estado_juego(diccionario_juego:dict)->bool:
         bool: True si hay intentos restantes, False en caso contrario.
     """
     if diccionario_juego["intentos"] == 0:
+        print("Te quedaste sin intentos")
+        print(f"La palabra era: {palabra}")	
         validacion = False
     else:
         validacion = True
+    if not diccionario_palabras:
+        print("No hay mas palabras")
+        validacion = False
     return validacion
 
 def actualizar_palabra_oculta(letra: str, palabra: str, palabra_oculta: list)->list:

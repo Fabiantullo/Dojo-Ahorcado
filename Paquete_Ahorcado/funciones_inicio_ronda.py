@@ -9,7 +9,7 @@ def seleccionar_categoria(lista: list) -> str:
     Returns:
         str: La categoria
     """    
-    return random.choice(lista)
+    return random.choice(lista) 
 
 def seleccionar_palabra(lista: list|dict, categoria: str) -> str:
     """
@@ -22,7 +22,12 @@ def seleccionar_palabra(lista: list|dict, categoria: str) -> str:
     Returns:
         str: La palabra
     """    
-    return random.choice(lista[categoria])
+    salida = random.choice(lista[categoria])
+    if lista[categoria] == []:
+        lista.pop(categoria)
+    else:
+        lista[categoria].remove(salida)
+    return salida
 
 def seleccionar_categoria_y_palabra(diccionario_palabras: dict) -> str:
     """
@@ -36,5 +41,5 @@ def seleccionar_categoria_y_palabra(diccionario_palabras: dict) -> str:
     """    
     lista_categorias = ["Programación", "Videojuegos", "Historia", "Deportes"]
     categoria = seleccionar_categoria(lista_categorias)
-    palabra = seleccionar_palabra(diccionario_palabras, categoria).lower()
+    palabra = (seleccionar_palabra(diccionario_palabras, categoria)).lower()
     return palabra
