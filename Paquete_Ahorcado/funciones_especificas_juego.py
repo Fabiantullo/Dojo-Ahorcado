@@ -23,6 +23,7 @@ def procesar_letra(letra: str, palabra: str, letras_acertadas: list, letras_inco
             letras_incorrectas.append(letra)
             diccionario_juego["intentos"] -= 1
             print(f"Te quedan {diccionario_juego['intentos']} intentos")
+            print("\033[31mTe equivocaste!!!\033[0m")
             validacion = False
             
     else:

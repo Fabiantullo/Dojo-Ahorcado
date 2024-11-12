@@ -24,7 +24,7 @@ def jugar_ahorcado() -> None:
     while verificar_estado_juego(diccionario_juego):
         mostrar_estado_juego(letras_acertadas, letras_incorrectas, palabra_oculta)
         letra = ingresar_letra("Ingrese una letra: ", "Ingrese una letra valida")
-        
+        sys("cls")
         if procesar_letra(letra, palabra, letras_acertadas, letras_incorrectas, diccionario_juego):
             palabra_oculta = actualizar_palabra_oculta(letra, palabra, palabra_oculta)
         
@@ -36,6 +36,10 @@ def jugar_ahorcado() -> None:
                 continue
             else:
                 break
+        
+        
+        mostrar_estado_juego(letras_acertadas, letras_incorrectas, palabra_oculta)
+            
         sys("pause")
         sys("cls")
     finalizar_juego(diccionario_juego)
